@@ -59,7 +59,7 @@ body {
     grid-template-columns: 3fr 1fr;
 }
 
-.input-container .form-input, .input-container .submit-btn {
+.input-container .form-input, .input-container .submit-btn, .input-container .edit-btn {
     border: none;
     outline: none;
     font-size: 1.7rem;
@@ -89,7 +89,7 @@ body {
     display: none;
 }
 
-.input-container .submit-btn:hover {
+.input-container .submit-btn:hover, .input-container .edit-btn:hover {
     background-color: var(--c-btn-hover);
 }
 

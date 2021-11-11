@@ -100,4 +100,4 @@ submitBtn.addEventListener('click', () => {
         const messageContent = 'Please Enter Value';
         showMessage(messageContent, errorMessageColor);
     }
-});
+}); 

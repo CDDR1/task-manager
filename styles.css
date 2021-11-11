@@ -1,0 +1,142 @@
+/* Common Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: sans-serif;
+    list-style: none;
+}
+
+:root {
+    --c-white: #f4f4f9;
+    --c-primary: #575757;
+    --c-btn-hover: #03458d;
+    --c-input: rgb(239, 255, 255);
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: var(--c-white);
+    display: flex;
+    justify-content: center;
+}
+/* End of Common Styles */
+
+/* Form Styles */
+.form {
+    background-color: #fff;
+    width: 35vw;
+    margin-top: 15vh;
+    padding: 7rem 3rem;
+    margin-bottom: 25rem;
+    box-shadow: 0 1rem 1.5rem rgb(199, 196, 196);
+    border-radius: 1.5rem;
+}
+
+.message-container {
+    text-align: center;
+    font-size: 1.2rem;
+    letter-spacing: 0.3rem;
+    margin-bottom: 1rem;
+    height: 3rem;
+}
+
+.form-title {
+    text-align: center;
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+    margin-bottom: 2rem;
+    color: var(--c-grey);
+}
+
+.input-container {
+    height: 3rem;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.input-container .form-input, .input-container .submit-btn {
+    border: none;
+    outline: none;
+    font-size: 1.7rem;
+}
+
+.input-container .form-input {
+    background-color: var(--c-input);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 2rem;
+}
+
+.input-container .form-input:focus {
+    border: 2px solid rgb(0, 98, 255);
+}
+
+.input-container .submit-btn {
+    background-color: var(--c-primary);
+    color: #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    letter-spacing: 0.2rem;
+    cursor: pointer;
+}
+
+.input-container .submit-btn:hover {
+    background-color: var(--c-btn-hover);
+}
+
+.clear-btn-container {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.clear-btn {
+    display: none;
+    color: rgb(168, 0, 0);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
+    background-color: #fff;
+}
+/* End of Form Styles */
+
+/* List Items */
+.list {
+    margin-top: 3.5rem;
+    padding: 0 2rem;
+}
+
+.list-item {
+    width: 100%;
+    font-size: 1.7rem;
+    margin: 1.7rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-icons {
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+}
+
+.list-icons .fa-edit {
+    margin: 0 1rem;
+    color: rgb(43, 212, 14);
+}
+
+.list-icons .fa-trash {
+    color: red;
+}
+
+.fas {
+    cursor: pointer;
+}
+/* End of List Items */

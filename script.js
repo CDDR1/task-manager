@@ -5,6 +5,8 @@ const input = document.querySelector('.form-input');
 const clearBtn = document.querySelector('.clear-btn');
 const successMessageColor = 'rgba(52, 235, 143, 0.4)';
 const errorMessageColor = 'rgba(255, 0, 0, 0.233)';
+const localStorageItems = [];
+localStorage.setItem('itemsList', JSON.stringify(localStorageItems));
 
 // This function shows a message to the user, wheter is an error message or a success message.
 const showMessage = (message, color) => {   
@@ -60,7 +62,8 @@ submitBtn.addEventListener('click', () => {
         // and display the edit button, which listens to a click event that updates the textNode 
         // value of the list item. 
         editIcon.addEventListener('click', () => {
-            // By this point, the content of input.value has been wiped out... luckily, it
+
+            // By this point, the content of input.value has been wiped out. Luckily, it
             // was saved in the "text" variable that was declared above. It can be used
             // to make the current input.value equal to the content of the element that 
             // is sotored in the "text" variable.
@@ -103,6 +106,17 @@ submitBtn.addEventListener('click', () => {
 
         // Clean the input
         input.value = '';
+
+        // Add item to local storage
+        const newItem = {
+            text: text,
+            id: 1
+        };
+        const currentItemsList = JSON.parse(localStorage.getItem('itemsList'));
+        currentItemsList.push(newItem);
+        localStorage.setItem('itemsList', JSON.stringify(currentItemsList));
+        console.log(currentItemsList);
+        
 
         // Show Success Message
         const messageContent = 'Item Added Successfully';

@@ -76,13 +76,17 @@ body {
     border: 2px solid rgb(0, 98, 255);
 }
 
-.input-container .submit-btn {
+.input-container .submit-btn, .input-container .edit-btn {
     background-color: var(--c-primary);
     color: #fff;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     letter-spacing: 0.2rem;
     cursor: pointer;
+}
+
+.input-container .edit-btn {
+    display: none;
 }
 
 .input-container .submit-btn:hover {

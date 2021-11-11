@@ -56,14 +56,30 @@ submitBtn.addEventListener('click', () => {
         const editIcon = document.createElement('i');
         editIcon.classList.add('fas', 'fa-edit');
 
+        // Edit button: Each time that the edit button is clicked, it will hide the submit button
+        // and display the edit button, which listens to a click event that updates the textNode 
+        // value of the list item. 
         editIcon.addEventListener('click', () => {
-            // submitBtn.innerHTML = 'Edit';
-            // input.value = text;
-            // const editBtn = submitBtn;
-            // editBtn.addEventListener('click', () => {
-            //     p.innerHTML = input.value;
-            //     submitBtn.innerHTML = 'Submit';
-            // });
+            // By this point, the content of input.value has been wiped out... luckily, it
+            // was saved in the "text" variable that was declared above. It can be used
+            // to make the current input.value equal to the content of the element that 
+            // is sotored in the "text" variable.
+            input.value = text;
+
+            // Get the edit button
+            const editBtn = document.querySelector('.edit-btn');
+
+            editBtn.style.display = 'block';
+            submitBtn.style.display = 'none';
+
+            editBtn.addEventListener('click', () => {
+                p.removeChild(textNode);
+                p.appendChild(document.createTextNode(input.value));
+                input.value = '';
+                editBtn.style.display = 'none';
+                submitBtn.style.display = 'block';
+                showMessage('List Item Edited Successfully', successMessageColor);
+            });
         });
 
         // Add the edit icon to the HTML

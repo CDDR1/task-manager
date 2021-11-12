@@ -5,8 +5,6 @@ const input = document.querySelector('.form-input');
 const clearBtn = document.querySelector('.clear-btn');
 const successMessageColor = 'rgba(52, 235, 143, 0.4)';
 const errorMessageColor = 'rgba(255, 0, 0, 0.233)';
-const localStorageItems = [];
-localStorage.setItem('itemsList', JSON.stringify(localStorageItems));
 
 // This function shows a message to the user, wheter is an error message or a success message.
 const showMessage = (message, color) => {   
@@ -33,6 +31,29 @@ clearBtn.addEventListener('click', () => {
     showMessage('Removed All Items', successMessageColor);
 });
 
+const addItemToLocalStorage = (text, paragraph) => {
+    // if the 'list' exist, set 'items' equal to the list.
+    // Otherwise, se 'items' equal to an empty array. This array is were each object, that 
+    // contains information about the task, will be added. 
+    const items = localStorage.getItem('list') ? 
+    JSON.parse(localStorage.getItem('list')) : [];
+            
+    // Create item Id:
+    const itemId = Date.now();
+    paragraph.id = itemId;
+            
+    const newItem = {
+        id: itemId,
+        text: text
+    };
+            
+    // Add new item to the list
+    items.push(newItem);
+
+    // Add the updated list to local storage
+    localStorage.setItem('list', JSON.stringify(items));
+};
+
 // Submit Button
 submitBtn.addEventListener('click', () => {
     const text = input.value;
@@ -52,6 +73,7 @@ submitBtn.addEventListener('click', () => {
         const iconsContainer = document.createElement('div');
         iconsContainer.classList.add('list-icons')
         li.appendChild(iconsContainer);
+
 
         // Create and store the edit icon in a variable. The edit icon is using the
         // "fas" and "fa-edit" classes from FONT AWESOME
@@ -88,6 +110,7 @@ submitBtn.addEventListener('click', () => {
         // Add the edit icon to the HTML
         iconsContainer.appendChild(editIcon);
 
+
         // Create and store the delete icon in a variable. The delete icon is using the
         // "fas" and "fa-trash" classes from FONT AWESOME
         const deleteIcon = document.createElement('i');
@@ -107,27 +130,20 @@ submitBtn.addEventListener('click', () => {
         // Clean the input
         input.value = '';
 
-        // Add item to local storage
-        const newItem = {
-            text: text,
-            id: 1
-        };
-        const currentItemsList = JSON.parse(localStorage.getItem('itemsList'));
-        currentItemsList.push(newItem);
-        localStorage.setItem('itemsList', JSON.stringify(currentItemsList));
-        console.log(currentItemsList);
-        
+
+        // Add new list item to local storage
+        addItemToLocalStorage(text, p);
+
 
         // Show Success Message
-        const messageContent = 'Item Added Successfully';
-        showMessage(messageContent, successMessageColor);
+        showMessage('Item Added Successfully', successMessageColor);
+
 
         // Show "Clear-All" Button 
         if (list.childNodes.length >= 1) showClearBtn();       
     }
     else {
         // Show Error Message
-        const messageContent = 'Please Enter Value';
-        showMessage(messageContent, errorMessageColor);
+        showMessage('Please Enter Value', errorMessageColor);
     }
 }); 

@@ -56,6 +56,7 @@ const addItemToLocalStorage = (id, text, paragraph) => {
 
 const deleteItemFromLocalStorage = (id) => {
     const items = JSON.parse(localStorage.getItem("list"));
+
     items.forEach((item) => {
         if (item.id === id) {
         items.splice(items.indexOf(item), 1);
@@ -64,6 +65,7 @@ const deleteItemFromLocalStorage = (id) => {
 
     // Add the updated list to local storage
     localStorage.setItem("list", JSON.stringify(items));
+
 };
 
 const editItemFromLocalStorage = (id, newText) => {
@@ -78,8 +80,7 @@ const editItemFromLocalStorage = (id, newText) => {
     localStorage.setItem("list", JSON.stringify(items));
 };
 
-// Submit Button
-submitBtn.addEventListener("click", () => {
+const addItem = () => {
     const text = input.value;
     if (text !== "") {
         const li = document.createElement("li");
@@ -168,7 +169,10 @@ submitBtn.addEventListener("click", () => {
         // Show Error Message
         showMessage("Please Enter Value", errorMessageColor);
     }
-});
+};
+
+// Submit Button
+submitBtn.addEventListener("click", addItem);
 
 const setupItems = () => {
     if (localStorage.getItem("list")) {
@@ -246,7 +250,14 @@ const setupItems = () => {
         });
 
         // If local storage is not empty, show the clear-all button
-        showClearBtn();
+        //showClearBtn();
+
+        if (localStorage.getItem('list') === '[]') {
+            localStorage.clear();
+        }
+        else {
+            showClearBtn();
+        }
     }
 };
 

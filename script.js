@@ -33,8 +33,8 @@ clearBtn.addEventListener("click", () => {
 });
 
 const addItemToLocalStorage = (id, text, paragraph) => {
-    // if the 'list' exist, set 'items' equal to the list.
-    // Otherwise, se 'items' equal to an empty array. This array is were each object, that
+    // if the "list" exist, set "items" equal to the list.
+    // Otherwise, se "items" equal to an empty array. This array is were each object, that
     // contains information about the task, will be added.
     const items = localStorage.getItem("list")
         ? JSON.parse(localStorage.getItem("list"))
@@ -173,6 +173,10 @@ const addItem = () => {
 
 // Submit Button
 submitBtn.addEventListener("click", addItem);
+// Input (Add item when pressing Enter)
+input.addEventListener("keypress", (e) => {
+    if (e.keyCode === 13) addItem();
+});
 
 const setupItems = () => {
     if (localStorage.getItem("list")) {
@@ -252,7 +256,7 @@ const setupItems = () => {
         // If local storage is not empty, show the clear-all button
         //showClearBtn();
 
-        if (localStorage.getItem('list') === '[]') {
+        if (localStorage.getItem("list") === "[]") {
             localStorage.clear();
         }
         else {

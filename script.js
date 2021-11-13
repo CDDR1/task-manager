@@ -173,10 +173,6 @@ const addItem = () => {
 
 // Submit Button
 submitBtn.addEventListener("click", addItem);
-// Input (Add item when pressing Enter)
-input.addEventListener("keypress", (e) => {
-    if (e.keyCode === 13) addItem();
-});
 
 const setupItems = () => {
     if (localStorage.getItem("list")) {

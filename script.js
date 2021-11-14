@@ -81,7 +81,8 @@ const editItemFromLocalStorage = (id, newText) => {
 };
 
 const addItem = () => {
-    const text = input.value;
+    const text = input.value;  
+
     if (text !== "") {
         const li = document.createElement("li");
         li.classList.add("list-item");
@@ -110,8 +111,8 @@ const addItem = () => {
         // and display the edit button, which listens to a click event that updates the textNode
         // value of the list item.
         editIcon.addEventListener("click", () => {
-
-            input.value = text;
+ 
+            input.value = p.textContent; 
 
             // Get the edit button
             const editBtn = document.querySelector(".edit-btn");
@@ -120,7 +121,7 @@ const addItem = () => {
             submitBtn.style.display = "none";
 
             editBtn.addEventListener("click", () => {
-                p.removeChild(textNode);
+                p.removeChild(textNode); // Need to fix this bug. textNode remains always the same and that is unwanted behavior. 
                 const newText = input.value;
                 p.appendChild(document.createTextNode(newText));
                 input.value = "";

@@ -111,7 +111,6 @@ const addItem = () => {
         // and display the edit button, which listens to a click event that updates the textNode
         // value of the list item.
         editIcon.addEventListener("click", () => {
- 
             input.value = p.textContent; 
 
             // Get the edit button
@@ -121,7 +120,7 @@ const addItem = () => {
             submitBtn.style.display = "none";
 
             editBtn.addEventListener("click", () => {
-                p.removeChild(textNode); // Need to fix this bug. textNode remains always the same and that is unwanted behavior. 
+                p.removeChild(textNode); // Need to fix this bug. 
                 const newText = input.value;
                 p.appendChild(document.createTextNode(newText));
                 input.value = "";
